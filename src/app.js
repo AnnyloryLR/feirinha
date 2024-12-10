@@ -43,7 +43,7 @@ const market = [
 
 	  { id:6,
       name: "Repolho",
-      quantity: 3, 
+      quantity: 1, 
       type: "verdura" 
     }
 ]
@@ -65,10 +65,21 @@ app.get("/items", (req, res) => {
 
 app.get("/items/:id", (req, res) => {
   const id = req.params.id;
+
   const veggie = market.find( m => {
-    return m.id === Number(id);
+    if(m.id === Number(id)){
+     return  m.id
+    }   
   })
 
+  if(!Number.isInteger(Number(id)) || Number(id) < 0 ){
+    res.sendStatus(400);
+    return
+  }else if(!veggie){
+    res.sendStatus(404);
+    return
+  }
+ 
   res.send(veggie);
 })
 
@@ -77,23 +88,16 @@ app.post("/items", (req, res) => {
 
   const alreadyExist =  market.find( m => m.name.includes(veggie.name))
 
-  if(!veggie.name || !veggie.quantity || !veggie.type){
+  if(!veggie.name || !Number.isInteger(veggie.quantity) || !veggie.type){
     res.sendStatus(422)
     return
   }
-
-  else if(market.includes(veggie.name)){
-    res.sendStatus(409)
-    return
-  }
-
 
   else if(alreadyExist && Object.keys(alreadyExist).length > 0){
 
     res.sendStatus(409)
     return
   }
-
 
   market.push({
     id:market.length + 1, 
