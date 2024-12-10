@@ -11,41 +11,17 @@ app.use(cors());
 app.use(json())
 
 const market = [
-    { id:1,
-      name: "Laranja",
-      quantity: 12,
-      type: "fruta" 
-    },
+    { id:1, name: "Laranja", quantity: 12, type: "fruta"},
       
-	  { id:2,
-      name: "Melância",
-      quantity: 1,
-      type: "fruta" 
-    },
+	  { id:2, name: "Melância", quantity: 1, type: "fruta"},
 
-	  { id:3,
-      name: "Uva",
-      quantity: 3, 
-      type: "fruta" 
-    },
+	  { id:3, name: "Uva", quantity: 3, type: "fruta"},
 
-    { id:4,
-      name: "Abobrinha",
-      quantity: 4,
-      type: "legume" 
-    },
+    { id:4, name: "Abobrinha", quantity: 4, type: "legume"},
       
-	  { id:5,
-      name: "Espinafre",
-      quantity: 1, 
-      type: "verdura" 
-    },
+	  { id:5, name: "Espinafre", quantity: 1, type: "verdura"},
 
-	  { id:6,
-      name: "Repolho",
-      quantity: 1, 
-      type: "verdura" 
-    }
+	  { id:6, name: "Repolho", quantity: 1, type: "verdura"}
 ]
 
 //sets a function to be executed when getting a GET route "/"
